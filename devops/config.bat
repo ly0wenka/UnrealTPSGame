@@ -2,7 +2,7 @@
 
 rem Engine params
 set EnginePath_4.26=C:\Epic Games\UE Binary\UE_4.26
-set EnginePath_5.0=C:\Epic Games\UE Binary\UE_5.0
+set EnginePath_5.0=C:\Program Files\Epic Games\UE_5.0
 set EnginePath_4.26_InstalledBuild=C:\Epic Games\UE Source\UE_4.26_InstalledBuild
 
 set UBTRelativePath4=Engine\Binaries\DotNET\UnrealBuildTool.exe

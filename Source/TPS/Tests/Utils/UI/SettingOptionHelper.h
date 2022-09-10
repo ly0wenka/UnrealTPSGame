@@ -15,15 +15,15 @@ using namespace WidgetTreeExtension;
 
 inline const USettingOptionWidget* CreateSettingOptionWidget(int32 SettingsIndex)
 {
-    const UVideoSettingsWidget* VideoSettingsWidget = WidgetBlueprintLibraryExtension::FindWidgetByClass<UVideoSettingsWidget>();
+    const UVideoSettingsWidget* VideoSettingsWidget = FindWidgetByClass<UVideoSettingsWidget>();
     const UVerticalBox* VerticalBox = Cast<UVerticalBox>(FindWidgetByName(VideoSettingsWidget, "VideoSettingsContainer"));
     return Cast<USettingOptionWidget>(VerticalBox->GetChildAt(SettingsIndex));
 }
 
-inline void Click(const USettingOptionWidget* SettingOptionWidget, const char* WidgetName)
+inline void Click(const UUserWidget* UserWidget, const char* WidgetName)
 {
-    const UButton* PrevSettingButton = Cast<UButton>(FindWidgetByName(SettingOptionWidget, WidgetName));
-    PrevSettingButton->OnClicked.Broadcast();
+    const UButton* Button = Cast<UButton>(FindWidgetByName(UserWidget, WidgetName));
+    Button->OnClicked.Broadcast();
 }
 
 inline void NextSettingsClick(int32 SettingsIndex)
@@ -38,6 +38,13 @@ inline void PrevSettingsClick(int32 SettingsIndex)
     const USettingOptionWidget* SettingOptionWidget = CreateSettingOptionWidget(SettingsIndex);
     const char* WidgetName = "PrevSettingButton";
     Click(SettingOptionWidget, WidgetName);
+}
+
+inline void DoBenchmarkClick()
+{
+    const UVideoSettingsWidget* VideoSettingsWidget = FindWidgetByClass<UVideoSettingsWidget>();
+    const char* WidgetName = "RunBenchmarkButton";
+    Click(VideoSettingsWidget, WidgetName);
 }
 }
 }

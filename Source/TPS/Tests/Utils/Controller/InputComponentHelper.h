@@ -5,14 +5,24 @@ namespace Tests
 {
 namespace InputComponentHelper
 {
-    inline void PausePressed(UInputComponent* InputComponent)
+    inline void DoInputAction(UInputComponent* InputComponent, const FString& ActionName, const FKey& Key)
     {
-        const int32 ActionIndex = TPS::Test::GetActionBindingIndexByName(InputComponent, "ToggleGamePause", EInputEvent::IE_Pressed);
+        const int32 ActionIndex = TPS::Test::GetActionBindingIndexByName(InputComponent, ActionName, EInputEvent::IE_Pressed);
         if (ActionIndex != INDEX_NONE)
         {
-            const auto JumpActionBind = InputComponent->GetActionBinding(ActionIndex);
-            JumpActionBind.ActionDelegate.Execute(EKeys::P);
+            const auto ActionBind = InputComponent->GetActionBinding(ActionIndex);
+            ActionBind.ActionDelegate.Execute(Key);
         }
+    }
+
+    inline void JumpPressed(UInputComponent* InputComponent)
+    {
+        DoInputAction(InputComponent, "Jump", EKeys::SpaceBar);
+    }
+
+    inline void PausePressed(UInputComponent* InputComponent)
+    {
+        DoInputAction(InputComponent, "ToggleGamePause", EKeys::P);
     }
 }
 }
