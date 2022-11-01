@@ -6,8 +6,8 @@
 #include "Tests/TestUtils.h"
 #include "Tests/Utils/Controller/InputComponentHelper.h"
 
-IMPLEMENT_SIMPLE_AUTOMATION_TEST(FSettingsCanBeApply, "TPS.UI.SettingsCanBeApply",
-    EAutomationTestFlags::EditorContext | EAutomationTestFlags::EngineFilter)
+IMPLEMENT_SIMPLE_AUTOMATION_TEST(
+    FSettingsCanBeApply, "TPS.UI.SettingsCanBeApply", EAutomationTestFlags::EditorContext | EAutomationTestFlags::EngineFilter)
 
 using namespace TPS::Test;
 using namespace Tests::InputComponentHelper;
@@ -15,7 +15,7 @@ using namespace Tests::SettingOptionHelper;
 
 bool FSettingsCanBeApply::RunTest(const FString& Parameters)
 {
-    const auto Level = LevelScope("/Game/ThirdPersonCPP/Maps/ThirdPersonExampleMap"); // [UnrealEd.SimpleMap] SimpleMapName
+    const auto Level = LevelScope("/Game/ThirdPersonCPP/Maps/ThirdPersonExampleMap");  // [UnrealEd.SimpleMap] SimpleMapName
     const APlayerController* PC = GetTestGameWorld()->GetFirstPlayerController();
     TestTrueExpr(PC != nullptr);
     PausePressed(PC->InputComponent);

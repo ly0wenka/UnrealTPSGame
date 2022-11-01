@@ -46,5 +46,5 @@ inline void DoBenchmarkClick()
     const char* WidgetName = "RunBenchmarkButton";
     Click(VideoSettingsWidget, WidgetName);
 }
-}
-}
+}  // namespace SettingOptionHelper
+}  // namespace Tests

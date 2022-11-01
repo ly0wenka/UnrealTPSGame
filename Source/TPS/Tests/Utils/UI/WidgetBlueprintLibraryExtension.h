@@ -14,6 +14,6 @@ T* FindWidgetByClass()
     UWidgetBlueprintLibrary::GetAllWidgetsOfClass(GetTestGameWorld(), Widgets, T::StaticClass(), false);
     return Widgets.Num() != 0 ? Cast<T>(Widgets[0]) : nullptr;
 }
-}
+}  // namespace WidgetBlueprintLibraryExtension
 
-}
+}  // namespace Tests

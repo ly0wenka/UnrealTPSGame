@@ -18,10 +18,7 @@ struct FInventoryItemInfo final
     EInventoryItemType Type;
 
     FInventoryItemInfo(const EInventoryItemType InType, const FString& InNamespace, const FString& InKey, const FString& InTextLiteral)
-        : Type(InType),
-          Namespace(InNamespace),
-          Key(InKey),
-          TextLiteral(InTextLiteral)
+        : Type(InType), Namespace(InNamespace), Key(InKey), TextLiteral(InTextLiteral)
     {
     }
 
@@ -45,11 +42,10 @@ public:
     UFUNCTION(BlueprintPure)
     static FText GetInventoryItemText(const EInventoryItemType InventoryItemType)
     {
-        const FInventoryItemInfo* ItemInfo = InternationalizationArray.FindByPredicate([&, InventoryItemType](FInventoryItemInfo Item)
-        {
-            return Item.Type == InventoryItemType;
-        });
-        return FInternationalization::ForUseOnlyByLocMacroAndGraphNodeTextLiterals_CreateText(*ItemInfo->TextLiteral, *ItemInfo->Namespace, *ItemInfo->Key); //return NSLOCTEXT("","","");
+        const FInventoryItemInfo* ItemInfo = InternationalizationArray.FindByPredicate(
+            [&, InventoryItemType](FInventoryItemInfo Item) { return Item.Type == InventoryItemType; });
+        return FInternationalization::ForUseOnlyByLocMacroAndGraphNodeTextLiterals_CreateText(
+            *ItemInfo->TextLiteral, *ItemInfo->Namespace, *ItemInfo->Key);  // return NSLOCTEXT("","","");
     }
 };
 

@@ -7,19 +7,19 @@ namespace Tests
 {
 namespace WidgetTreeExtension
 {
-    inline UWidget* FindWidgetByName(const UUserWidget* Widget, const FName& WidgetName)
-    {
-        if (!Widget || !Widget->WidgetTree) return nullptr;
-        UWidget* FoundedWidget = nullptr;
-        UWidgetTree::ForWidgetAndChildren(Widget->WidgetTree->RootWidget,
-            [&](UWidget* Child)
+inline UWidget* FindWidgetByName(const UUserWidget* Widget, const FName& WidgetName)
+{
+    if (!Widget || !Widget->WidgetTree) return nullptr;
+    UWidget* FoundedWidget = nullptr;
+    UWidgetTree::ForWidgetAndChildren(Widget->WidgetTree->RootWidget,
+        [&](UWidget* Child)
         {
             if (Child && Child->GetFName().IsEqual(WidgetName))
             {
                 FoundedWidget = Child;
             }
         });
-        return FoundedWidget;
-    }
+    return FoundedWidget;
 }
-}
+}  // namespace WidgetTreeExtension
+}  // namespace Tests

@@ -1,4 +1,4 @@
-@echo off
+rem @echo off
 
 rem Engine params
 set EnginePath_4.26=C:\Epic Games\UE Binary\UE_4.26

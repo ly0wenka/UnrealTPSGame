@@ -14,14 +14,14 @@ using namespace Tests::InputComponentHelper;
 
 bool PauseMenuShouldBeVisibleOnGameUnPaused::RunTest(const FString& Parameters)
 {
-    const auto Level = LevelScope("/Game/ThirdPersonCPP/Maps/ThirdPersonExampleMap"); // [UnrealEd.SimpleMap] SimpleMapName
+    const auto Level = LevelScope("/Game/ThirdPersonCPP/Maps/ThirdPersonExampleMap");  // [UnrealEd.SimpleMap] SimpleMapName
     const APlayerController* PC = GetTestGameWorld()->GetFirstPlayerController();
-    TestTrueExpr(PC!=nullptr);
+    TestTrueExpr(PC != nullptr);
 
     const UPauseMenuWidget* PauseMenuWidget = FindWidgetByClass<UPauseMenuWidget>();
-    TestTrueExpr(PauseMenuWidget!=nullptr);
+    TestTrueExpr(PauseMenuWidget != nullptr);
     TestTrueExpr(PauseMenuWidget->GetVisibility() == ESlateVisibility::Collapsed);
-    
+
     PausePressed(PC->InputComponent);
     PausePressed(PC->InputComponent);
 

@@ -6,8 +6,8 @@
 #include "Tests/Utils/UI/SettingOptionHelper.h"
 #include "UI/PauseMenu/PauseMenuWidget.h"
 
-IMPLEMENT_SIMPLE_AUTOMATION_TEST(AutoBenchmarkShouldWork, "TPS.UI.AutoBenchmarkShouldWork",
-    EAutomationTestFlags::EditorContext | EAutomationTestFlags::EngineFilter)
+IMPLEMENT_SIMPLE_AUTOMATION_TEST(
+    AutoBenchmarkShouldWork, "TPS.UI.AutoBenchmarkShouldWork", EAutomationTestFlags::EditorContext | EAutomationTestFlags::EngineFilter)
 
 using namespace TPS::Test;
 using namespace Tests::InputComponentHelper;
@@ -15,9 +15,9 @@ using namespace Tests::SettingOptionHelper;
 
 bool AutoBenchmarkShouldWork::RunTest(const FString& Parameters)
 {
-    const auto Level = LevelScope("/Game/ThirdPersonCPP/Maps/ThirdPersonExampleMap"); // [UnrealEd.SimpleMap] SimpleMapName
+    const auto Level = LevelScope("/Game/ThirdPersonCPP/Maps/ThirdPersonExampleMap");  // [UnrealEd.SimpleMap] SimpleMapName
     const APlayerController* PC = GetTestGameWorld()->GetFirstPlayerController();
-    TestTrueExpr(PC!=nullptr);
+    TestTrueExpr(PC != nullptr);
     PausePressed(PC->InputComponent);
 
     DoBenchmarkClick();
