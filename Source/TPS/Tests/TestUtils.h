@@ -5,6 +5,9 @@
 #include "CoreMinimal.h"
 #include "Engine/Blueprint.h"
 #include "Tests/AutomationCommon.h"
+#include "AutomationBlueprintFunctionLibrary.h"
+#include "TakeScreenshotAfterTimeLatentAction.h"
+#include "BufferVisualizationData.h"
 
 namespace TPS
 {
@@ -75,6 +78,42 @@ int32 GetActionBindingIndexByName(UInputComponent* InputComp, const FString& Act
 int32 GetAxisBindingIndexByName(UInputComponent* InputComp, const FString& AxisName);
 
 FString GetTestDataDir();
+
+class FTakeScreenshotLatentCommand : public IAutomationLatentCommand
+{
+public:
+    FTakeScreenshotLatentCommand(const FString& InScreenshotName);
+    virtual ~FTakeScreenshotLatentCommand();
+
+protected:
+    const FString ScreenshotName;
+    bool ScreenshotRequested{false};
+    bool CommandCompleted{false};
+
+    virtual void OnScreenshotTakenAndCompared();
+};
+
+class FTakeGameScreenshotLatentCommand : public FTakeScreenshotLatentCommand
+{
+public:
+    FTakeGameScreenshotLatentCommand(const FString& InScreenshotName);
+
+    virtual bool Update() override;
+};
+
+class FTakeUIScreenshotLatentCommand : public FTakeScreenshotLatentCommand
+{
+public:
+    FTakeUIScreenshotLatentCommand(const FString& InScreenshotName);
+    virtual bool Update() override;
+
+private:
+    bool ScreenshotSetupDone{false};
+
+    virtual void OnScreenshotTakenAndCompared() override;
+    void SetBufferVisualization(const FName& VisualizeBuffer);
+};
+
 
 }  // namespace Test
 }  // namespace TPS
