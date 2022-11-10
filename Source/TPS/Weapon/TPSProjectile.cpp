@@ -1,6 +1,5 @@
 ﻿// My game copyright
 
-
 #include "TPSProjectile.h"
 #include "Components/SphereComponent.h"
 #include "GameFramework/ProjectileMovementComponent.h"
@@ -41,4 +40,3 @@ void ATPSProjectile::OnProjectileHit(
         Destroy();
     }
 }
-

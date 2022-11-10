@@ -9,7 +9,6 @@
 class UStaticMeshComponent;
 class ATPSProjectile;
 
-
 UCLASS(Abstract)
 class TPS_API ATPSTurret : public AActor
 {

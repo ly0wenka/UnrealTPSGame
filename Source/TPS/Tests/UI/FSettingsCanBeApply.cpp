@@ -32,6 +32,7 @@ bool FSettingsCanBeApply::RunTest(const FString& Parameters)
     TestTrueExpr(GIQualityAfter == VideoSettings[2]->GetCurrentOption().Value);
 
     UTPSGameUserSettings::Get()->SetGlobalIlluminationQuality(GIQualityBefore);
+    UTPSGameUserSettings::Get()->ApplySettings(false);
     // for (int32 i = 0; i < 5; ++i)
     // {
     //     ADD_LATENT_AUTOMATION_COMMAND(FWaitLatentCommand(1.0f));

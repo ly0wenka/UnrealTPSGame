@@ -12,15 +12,14 @@
 IMPLEMENT_SIMPLE_AUTOMATION_TEST(FRenderingShouldBeCorrect, "TPSGame.Screenshots.RenderingShouldBeCorrect",
     EAutomationTestFlags::ApplicationContextMask | EAutomationTestFlags::ProductFilter | EAutomationTestFlags::HighPriority);
 
-
 IMPLEMENT_SIMPLE_AUTOMATION_TEST(FMainPlayerHUDShouldBeRendered, "TPSGame.Screenshots.MainPlayerHUDShouldBeRendered",
     EAutomationTestFlags::ApplicationContextMask | EAutomationTestFlags::ProductFilter | EAutomationTestFlags::HighPriority |
-    EAutomationTestFlags::NonNullRHI);
+        EAutomationTestFlags::NonNullRHI);
 
 IMPLEMENT_SIMPLE_AUTOMATION_TEST(FHealthWidgetShouldBeRenderedCorrectlyAfterDamage,
-"TPSGame.Screenshots.HealthWidgetShouldBeRenderedCorrectlyAfterDamage",
-EAutomationTestFlags::ApplicationContextMask | EAutomationTestFlags::ProductFilter | EAutomationTestFlags::HighPriority |
-EAutomationTestFlags::NonNullRHI);
+    "TPSGame.Screenshots.HealthWidgetShouldBeRenderedCorrectlyAfterDamage",
+    EAutomationTestFlags::ApplicationContextMask | EAutomationTestFlags::ProductFilter | EAutomationTestFlags::HighPriority |
+        EAutomationTestFlags::NonNullRHI);
 
 IMPLEMENT_SIMPLE_AUTOMATION_TEST(FSettingsWidgetBeRenderedWhenGamePaused, "TPSGame.Screenshots.SettingsWidgetBeRenderedWhenGamePaused",
     EAutomationTestFlags::ApplicationContextMask | EAutomationTestFlags::ProductFilter | EAutomationTestFlags::HighPriority |
@@ -33,14 +32,14 @@ bool FRenderingShouldBeCorrect::RunTest(const FString& Parameters)
 {
     const auto Level = LevelScope("/Game/ThirdPersonCPP/Maps/ThirdPersonExampleMap");  // [UnrealEd.SimpleMap] SimpleMapName
     UWorld* World = GetTestGameWorld();
-    if(!TestNotNull("World exists", World)) return false;
+    if (!TestNotNull("World exists", World)) return false;
 
-    const FTransform Transform{FVector{395.000000f,-780.000000f,310.000000f }};
+    const FTransform Transform{FVector{395.000000f, -780.000000f, 310.000000f}};
     ACameraActor* Camera = World->SpawnActor<ACameraActor>(ACameraActor::StaticClass(), Transform);
-    if(!TestNotNull("Camera exists", Camera)) return false;
+    if (!TestNotNull("Camera exists", Camera)) return false;
 
     APlayerController* PC = World->GetFirstPlayerController();
-    if(!TestNotNull("Player controller exists", PC)) return false;
+    if (!TestNotNull("Player controller exists", PC)) return false;
 
     PC->SetViewTarget(Camera);
 
@@ -88,6 +87,5 @@ bool FSettingsWidgetBeRenderedWhenGamePaused::RunTest(const FString& Parameters)
     ADD_LATENT_AUTOMATION_COMMAND(FTakeUIScreenshotLatentCommand("settings_widget_screenshot"));
     return true;
 }
-
 
 #endif

@@ -1,6 +1,5 @@
 ﻿// My game copyright
 
-
 #include "TPSTurret.h"
 #include "Weapon/TPSProjectile.h"
 #include "Components/StaticMeshComponent.h"

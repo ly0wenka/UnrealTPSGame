@@ -162,6 +162,13 @@ void FTakeUIScreenshotLatentCommand::SetBufferVisualization(const FName& Visuali
     }
 }
 
+void SpecCloseLevel(UWorld* World)
+{
+    if (APlayerController* PC = World->GetFirstPlayerController())
+    {
+        PC->ConsoleCommand(TEXT("Exit"), true);
+    }
+}
 
 }  // namespace Test
 }  // namespace TPS

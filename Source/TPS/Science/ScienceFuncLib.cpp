@@ -29,4 +29,3 @@ int32 UScienceFuncLib::Factorial(int32 Value)
 
     return Fac;
 }
-
